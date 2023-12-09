@@ -57,7 +57,7 @@ import { storeToRefs } from "pinia";
 const useMovie = useMovieStore();
 const { movie, showFullVideo } = storeToRefs(useMovie);
 
-let currentSlide = ref(0);
+const currentSlide = ref(0);
 
 const props = defineProps({ category: String, movies: Array });
 const { movies, category } = toRefs(props);
