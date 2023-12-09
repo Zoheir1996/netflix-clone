@@ -1,3 +1,47 @@
-<script setup></script>
+<script setup>
+import movies from "../movies.json";
+import VideoCarousel from "../components/VideoCarousel.vue";
+import ChevronLeft from "vue-material-design-icons/ChevronLeft.vue";
+import { useMovieStore } from "../stores/movie";
+import MovieDetails from "../components/MovieDetails.vue";
+import { storeToRefs } from "pinia";
 
-<template>HOME VIEW</template>
+const useMovie = useMovieStore();
+
+const { movie, showFullVideo } = storeToRefs(useMovie);
+</script>
+
+<template>
+  <div
+    class="fixed flex z-20 top-0 right-0 w-full h-[50%] bg-black pl-[120px] bg-clip-border"
+  >
+    <MovieDetails v-if="movie" :movie="movie" />
+    <video
+      v-if="movie"
+      :src="'/videos/' + movie.name + '.mp4'"
+      muted
+      autoplay
+      loop
+      class="absolute z-0 h-[600px] right-0 top-0"
+    />
+  </div>
+  <div
+    class="fixed z-30 bottom-0 right-0 w-full h-[55%] pl-[120px] overflow-y-auto"
+  >
+    <VideoCarousel
+      class="pb-14 pt-14"
+      category="Popular Movies"
+      :movies="movies[0]"
+    />
+    <VideoCarousel
+      class="pb-14 pt-14"
+      category="Horror Movies"
+      :movies="movies[1]"
+    />
+    <VideoCarousel
+      class="pb-14 pt-14"
+      category="Featured Movies"
+      :movies="movies[2]"
+    />
+  </div>
+</template>
