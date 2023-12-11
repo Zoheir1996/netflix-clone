@@ -69,7 +69,7 @@ onMounted(() => {
       autoplay
       loop
       controls
-      class="absolute z-0 h-[100vh] right-0 top-0"
+      class="absolute z-0 h-[600px] right-0 top-0"
     ></video>
 
     <!-- RouterView est un composant qui affiche le composant correspondant à l'URL courante. -->

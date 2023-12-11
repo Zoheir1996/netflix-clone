@@ -3,8 +3,22 @@ import Homeview from "../views/Homeview.vue";
 import Searchview from "../views/Searchview.vue";
 
 const routes = [
-  { path: "/", component: Homeview },
-  { path: "/search", component: Searchview },
+  {
+    path: "/",
+    component: Homeview,
+    meta: {
+      enterClass: "animate__animated animate__fadeInleft",
+      leaveClass: "animate__animated animate__fadeOutleft",
+    },
+  },
+  {
+    path: "/search",
+    component: Searchview,
+    meta: {
+      enterClass: "animate__animated animate__fadeInleft",
+      leaveClass: "animate__animated animate__fadeOutleft",
+    },
+  },
   // Ajoutez d'autres routes selon vos besoins
 ];
 
