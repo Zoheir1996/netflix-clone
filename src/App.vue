@@ -32,13 +32,20 @@ onMounted(() => {
       <router-link to="/">
         <img
           class="absolute top-0 w-[35px] mt-10 ml-10"
-          src="/images/netflix-logo.png"
+          src="/images/zedflix2.png"
         />
       </router-link>
       <div>
         <div class="py-2 mx-10 my-6">
           <router-link to="/search">
-            <Magnify fillColor="#FFFFFF" :size="40" class="cursor-pointer" />
+            <transition name="fade">
+              <Magnify
+                v-if="!showFullVideo"
+                fillColor="#FFFFFF"
+                :size="40"
+                class="cursor-pointer"
+              />
+            </transition>
           </router-link>
         </div>
 
@@ -60,7 +67,11 @@ onMounted(() => {
       </div>
     </div>
     <div v-if="!showFullVideo">
-      <RouterView />
+      <RouterView class="router-view" v-slot="{ Component }">
+        <Transition name="page-opacity" mode="out-in">
+          <component :is="Component" />
+        </Transition>
+      </RouterView>
     </div>
     <video
       v-else-if="movie"
@@ -75,3 +86,15 @@ onMounted(() => {
     <!-- RouterView est un composant qui affiche le composant correspondant à l'URL courante. -->
   </div>
 </template>
+
+<style>
+.page-opacity-enter-active,
+.page-opacity-leave-active {
+  transition: 600ms ease all;
+}
+
+.page-opacity-enter-from,
+.page-opacity-leave-to {
+  opacity: 0;
+}
+</style>
