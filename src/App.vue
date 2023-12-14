@@ -10,6 +10,7 @@ import Plus from "vue-material-design-icons/Plus.vue";
 
 import { useMovieStore } from "./stores/movie";
 import { storeToRefs } from "pinia";
+import ChevronLeft from "vue-material-design-icons/ChevronLeft.vue";
 const useMovie = useMovieStore();
 
 const { movie, showFullVideo } = storeToRefs(useMovie);
@@ -73,17 +74,22 @@ onMounted(() => {
         </Transition>
       </RouterView>
     </div>
-    <video
-      v-else-if="movie"
-      :src="'/videos/' + movie.name + '.mp4'"
-      muted
-      autoplay
-      loop
-      controls
-      class="absolute z-0 h-[600px] right-0 top-0"
-    ></video>
 
-    <!-- RouterView est un composant qui affiche le composant correspondant à l'URL courante. -->
+    <div v-if="showFullVideo">
+      <div
+        @click="showFullVideo = false"
+        class="absolute z-50 p-2 m-4 bg-white bg-opacity-50 rounded-full cursor-pointer"
+      >
+        <ChevronLeft fillColor="#FFFFFF" :size="30" />
+      </div>
+      <video
+        :src="'/videos/' + movie.name + '.mp4'"
+        autoplay
+        loop
+        controls
+        class="absolute z-0 w-[100vw] h-full object-fit"
+      />
+    </div>
   </div>
 </template>
 

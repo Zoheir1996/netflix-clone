@@ -20,7 +20,6 @@ const { movie, showFullVideo } = storeToRefs(useMovie);
         class="absolute z-30 h-[600px] left-[120px] w-[77%] right-0 top-0 bg-gradient-to-r from-black via-black"
       />
       <MovieDetails v-if="movie" :movie="movie" />
-
       <video
         v-if="movie"
         :src="'/videos/' + movie.name + '.mp4'"
@@ -31,7 +30,7 @@ const { movie, showFullVideo } = storeToRefs(useMovie);
       />
     </div>
     <div
-      class="fixed z-30 bottom-0 right-0 w-full h-[55%] pl-[120px] overflow-y-auto"
+      class="fullscreen-video fixed z-30 bottom-0 right-0 w-full h-[55%] pl-[120px] overflow-y-auto"
     >
       <VideoCarousel
         class="pb-14 pt-14"
@@ -49,5 +48,8 @@ const { movie, showFullVideo } = storeToRefs(useMovie);
         :movies="movies[2]"
       />
     </div>
+    <div
+      class="absolute z-20 h-[70%] left-[120px] w-[100%] right-0 bottom-0 bg-gradient-to-t from-black via-black"
+    />
   </div>
 </template>
