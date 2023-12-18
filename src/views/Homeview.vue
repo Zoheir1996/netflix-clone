@@ -1,7 +1,6 @@
 <script setup>
 import movies from "../movies.json";
 import VideoCarousel from "../components/VideoCarousel.vue";
-import ChevronLeft from "vue-material-design-icons/ChevronLeft.vue";
 import { useMovieStore } from "../stores/movie";
 import MovieDetails from "../components/MovieDetails.vue";
 import { storeToRefs } from "pinia";

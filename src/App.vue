@@ -39,7 +39,7 @@ onMounted(() => {
       <div>
         <div class="py-2 mx-10 my-6">
           <router-link to="/search">
-            <transition name="fade">
+            <transition>
               <Magnify
                 v-if="!showFullVideo"
                 fillColor="#FFFFFF"
