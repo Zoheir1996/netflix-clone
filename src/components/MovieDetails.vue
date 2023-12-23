@@ -1,5 +1,5 @@
 <template>
-  <div v-if="movie" class="z-40 text-white w-[53%] pt-20">
+  <div v-if="movie" class="z-40 text-white w-[53%] pt-20 bottom-0">
     <div class="text-[55px] font-semibold font-serif">{{ movie.name }}</div>
     <div class="flex items-center text-lg pt-4">
       <div>{{ movie.year }}</div>
@@ -16,7 +16,9 @@
         <span class="pl-4">{{ movie.genre.three }}</span>
       </div>
     </div>
-    <div class="text-2xl pt-6">{{ movie.description }}</div>
+    <div class="text-2xl pt-6 max-w-[400px]">
+      {{ movie.description }}
+    </div>
   </div>
 </template>
 
