@@ -10,9 +10,13 @@
       >
         <ChevronLeft fillColor="#FFFFFF" :size="30" />
       </div>
+
       <div
         class="fullscreen-video fixed z-30 bottom-0 right-0 w-full h-full pl-[120px] overflow-y-auto"
       >
+        <div>
+          <SearchMovie />
+        </div>
         <div class="card-container" ref="cardContainer">
           <div v-for="movie in sortedMovies" :key="movie.id" class="card-movie">
             <img
@@ -45,6 +49,8 @@ import ChevronLeft from "vue-material-design-icons/ChevronLeft.vue";
 import { getPlayedNow } from "../service/theimdb";
 import { format } from "date-fns";
 import { fr } from "date-fns/locale/fr";
+import SearchMovie from "../components/SearchMovie.vue";
+import { discoverMovie } from "../service/theimdb";
 
 export default {
   data() {
@@ -70,9 +76,10 @@ export default {
       window.history.back();
     },
   },
-  components: { ChevronLeft },
+  components: { ChevronLeft, SearchMovie },
   async beforeMount() {
     this.movies = await getPlayedNow();
+    this.movies = await discoverMovie();
   },
   watch: {
     movies() {
