@@ -17,28 +17,6 @@
         <div>
           <SearchMovie />
         </div>
-        <div class="card-container" ref="cardContainer">
-          <div v-for="movie in sortedMovies" :key="movie.id" class="card-movie">
-            <img
-              class="card-thumb"
-              :src="`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`"
-              :alt="`Poster for ${movie.title}`"
-            />
-            <span class="movie-vote">{{
-              formatNumber(movie.vote_average)
-            }}</span>
-            <div class="card-body">
-              <p class="movie-title">{{ movie.title }}</p>
-              <p class="movie-date">
-                {{ formatFrenchDate(movie.release_date) }}
-              </p>
-              <div class="movie-details">
-                <h3 class="titleInDetails">Resumé</h3>
-                <p>{{ movie.overview }}</p>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </div>
@@ -80,15 +58,6 @@ export default {
   async beforeMount() {
     this.movies = await getPlayedNow();
     this.movies = await discoverMovie();
-  },
-  watch: {
-    movies() {
-      this.$nextTick(() => {
-        this.$refs.cardContainer.classList.remove("sorted");
-        void this.$refs.cardContainer.offsetWidth;
-        this.$refs.cardContainer.classList.add("sorted");
-      });
-    },
   },
 };
 </script>
