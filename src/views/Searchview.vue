@@ -10,12 +10,43 @@
       >
         <ChevronLeft fillColor="#FFFFFF" :size="30" />
       </div>
-
       <div
         class="fullscreen-video fixed z-30 bottom-0 right-0 w-full h-full pl-[120px] overflow-y-auto"
       >
-        <div>
-          <SearchMovie />
+        <SearchMovie />
+        <div class="py-3">
+          <div
+            class="mb-2 text-5xl font-bold leading-none tracking-tighter dark:text-zinc-400 text-zinc-600 text-center"
+          >
+            Les dernieres sorties au cinéma
+          </div>
+          <div class="card-container" ref="cardContainer ">
+            <div
+              v-for="movie in sortedMovies"
+              :key="movie.id"
+              class="card-movie"
+              style="margin-top: 20px;"
+            >
+              <img
+                class="card-thumb"
+                :src="`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`"
+                :alt="`Poster for ${movie.title}`"
+              />
+              <span class="movie-vote">{{
+                formatNumber(movie.vote_average)
+              }}</span>
+              <div class="card-body">
+                <p class="movie-title">{{ movie.title }}</p>
+                <p class="movie-date">
+                  {{ formatFrenchDate(movie.release_date) }}
+                </p>
+                <div class="movie-details">
+                  <h3 class="titleInDetails">Resumé</h3>
+                  <p>{{ movie.overview }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -28,7 +59,6 @@ import { getPlayedNow } from "../service/theimdb";
 import { format } from "date-fns";
 import { fr } from "date-fns/locale/fr";
 import SearchMovie from "../components/SearchMovie.vue";
-import { discoverMovie } from "../service/theimdb";
 
 export default {
   data() {
@@ -57,7 +87,15 @@ export default {
   components: { ChevronLeft, SearchMovie },
   async beforeMount() {
     this.movies = await getPlayedNow();
-    this.movies = await discoverMovie();
+  },
+  watch: {
+    movies() {
+      this.$nextTick(() => {
+        this.$refs.cardContainer.classList.remove("sorted");
+        void this.$refs.cardContainer.offsetWidth;
+        this.$refs.cardContainer.classList.add("sorted");
+      });
+    },
   },
 };
 </script>
@@ -86,6 +124,7 @@ export default {
   flex-wrap: wrap;
   justify-content: flex-start; /* Alignez les cartes de gauche à droite */
   padding: 8%;
+  padding-top: 40px;
 }
 
 .card-movie {

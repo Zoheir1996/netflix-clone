@@ -1,24 +1,21 @@
 <template>
   <div>
-    <div class="padding:10% mx-auto py-12 px-10 ">
+    <div class="padding:10% mx-auto py-12 px-20">
       <div
         class="mb-2 text-5xl font-bold leading-none tracking-tighter dark:text-zinc-400 text-zinc-600"
-      >
-        Recherche
-      </div>
+      ></div>
       <div class="relative">
         <input
           v-model="query"
           @input="onInput"
           type="text"
-          placeholder="Rechercher..."
+          placeholder="Cherche un film..."
           class="w-full px-3 py-3 font-bold border border-zinc-400 bg-zinc-600 rounded-lg text-zinc-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition"
         />
         <div
           v-if="searchResults.length > 0"
           class="card-container"
           ref="cardContainer"
-          style="display: flex; flex-wrap; justify-content: flex-start; padding: 8%;"
         >
           <div
             v-for="movie in searchResults.filter(
@@ -28,6 +25,7 @@
             class="card-movie"
           >
             <img
+              v-if="movie.backdrop_path"
               class="card-thumb"
               :src="`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`"
               :alt="`Poster for ${movie.title}`"
@@ -47,6 +45,7 @@
             </div>
           </div>
         </div>
+        <div></div>
         <div v-if="searchResults.length > 0"></div>
       </div>
     </div>
@@ -92,3 +91,5 @@ const performSearch = async () => {
   }
 };
 </script>
+
+
