@@ -25,7 +25,7 @@
               v-for="movie in sortedMovies"
               :key="movie.id"
               class="card-movie"
-              style="margin-top: 20px;"
+              style="margin-top: 20px"
             >
               <img
                 class="card-thumb"
@@ -88,16 +88,10 @@ export default {
   async beforeMount() {
     this.movies = await getPlayedNow();
   },
-  watch: {
-    movies() {
-      this.$nextTick(() => {
-        this.$refs.cardContainer.classList.remove("sorted");
-        void this.$refs.cardContainer.offsetWidth;
-        this.$refs.cardContainer.classList.add("sorted");
-      });
-    },
-  },
 };
+
+
+
 </script>
 
 <style>

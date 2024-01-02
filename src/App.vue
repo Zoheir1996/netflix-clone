@@ -19,6 +19,12 @@ onMounted(() => {
   // nous définissons un délai (timeout) de 100 millisecondes.
   setTimeout(() => (movie.value = movies[0][0]), 100);
 });
+function hideTooltip() {
+  const tooltip = document.querySelector(".tooltiptext");
+  if (tooltip) {
+    tooltip.style.visibility = "hidden";
+  }
+}
 </script>
 
 <template>
@@ -39,14 +45,16 @@ onMounted(() => {
       <div>
         <div class="py-2 mx-10 my-6">
           <router-link to="/search">
-            <transition>
+            <div class="tooltip">
               <Magnify
                 v-if="!showFullVideo"
                 fillColor="#FFFFFF"
                 :size="40"
                 class="cursor-pointer"
+                @click="hideTooltip"
               />
-            </transition>
+              <span class="tooltiptext"> Regarde ici :p </span>
+            </div>
           </router-link>
         </div>
 
@@ -102,5 +110,41 @@ onMounted(() => {
 .page-opacity-enter-from,
 .page-opacity-leave-to {
   opacity: 0;
+}
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+  visibility: visible;
+  width: 110px;
+  background-color: rgb(255, 255, 255);
+  color: #000000;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 150%;
+  left: 50%;
+  margin-left: -60px;
+  font-size: 10px;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: rgb(255, 255, 255) transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
 }
 </style>
