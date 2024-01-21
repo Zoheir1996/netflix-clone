@@ -1,30 +1,31 @@
-# netflix-clone
+<div align="center">
+  <img src="link/to/your/screenshot.png" alt="Netflix Clone" width="700">
+</div>
 
-This template should help get you started developing with Vue 3 in Vite.
+# Netflix Clone
 
-## Recommended IDE Setup
+Un clone de l'interface utilisateur de Netflix réalisé avec [Vue.js](https://vuejs.org/) et [Tailwind CSS](https://tailwindcss.com/). Ce projet a pour but de pratiquer le développement web et d'explorer les fonctionnalités de Vue.js.
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## 🚀 Fonctionnalités
 
-## Customize configuration
+- Affichage des films et séries populaires
+- Recherche de films
+- Visionnage en plein écran des bandes-annonces
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+## 📸 Captures d'écran
 
-## Project Setup
+![Screenshot 1](link/to/screenshot1.png)
+![Screenshot 2](link/to/screenshot2.png)
 
-```sh
-npm install
-```
+## 🛠️ Technologies utilisées
 
-### Compile and Hot-Reload for Development
+- Vue.js
+- Tailwind CSS
+- Node js
 
-```sh
-npm run dev
-```
+## 🚀 Installation
 
-### Compile and Minify for Production
+1. **Clonez le référentiel :**
 
-```sh
-npm run build
-```
-# netflix-clone
+   ```bash
+   git clone https://github.com/Zoheir1996/netflix-clone.git
