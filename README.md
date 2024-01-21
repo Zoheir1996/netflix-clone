@@ -20,3 +20,20 @@ Un clone de l'interface utilisateur de Netflix réalisé avec [Vue.js](https://v
 
    ```bash
    git clone https://github.com/Zoheir1996/netflix-clone.git
+
+## 🚀 Installez les dépendances :
+cd netflix-clone
+npm install
+
+## 🚀 Exécutez l'application en mode développement :
+npm run serve
+
+🤝 Contribuer
+
+Les contributions sont les bienvenues ! N'hésitez pas à ouvrir des issues pour des bugs, des suggestions d'amélioration ou de nouvelles fonctionnalités.
+
+    Forkz le projet
+    Créez une branche pour votre fonctionnalité (git checkout -b feature/nouvelle-fonctionnalite)
+    Commitz vos modifications (git commit -am 'Ajoutez une nouvelle fonctionnalité')
+    Pushez vers la branche (git push origin feature/nouvelle-fonctionnalite)
+    Créez une nouvelle Pull Request
